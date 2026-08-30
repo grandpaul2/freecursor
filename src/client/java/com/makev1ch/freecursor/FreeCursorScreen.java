@@ -22,6 +22,20 @@ public class FreeCursorScreen extends Screen {
         super.render(context, mouseX, mouseY, delta);
     }
 
+    /**
+     * MacroTech patch: leave the world completely undimmed while the cursor is free.
+     *
+     * Screen#renderBackground paints the vanilla in-game darkening gradient across the whole
+     * screen whenever a world is loaded. This screen has no widgets of its own, so there is
+     * nothing that needs to stay legible against it -- the gradient is pure loss when the point
+     * is to keep watching what is behind it. The mod's "Disable Blur" option does not cover
+     * this: that only restores options.menuBackgroundBlurriness, a separate effect.
+     */
+    @Override
+    public void renderBackground(DrawContext context, int mouseX, int mouseY, float delta) {
+        // intentionally empty -- no darkening, no blur
+    }
+
     @Override
     public boolean shouldPause() {
         return false;
