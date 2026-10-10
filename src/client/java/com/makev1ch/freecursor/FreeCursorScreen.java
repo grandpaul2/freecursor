@@ -17,9 +17,22 @@ public class FreeCursorScreen extends Screen {
         this.originalMenuBackgroundBlurriness = originalMenuBackgroundBlurriness;
     }
 
+    /**
+     * MacroTech patch (mt2): chat still shows while the cursor is free.
+     *
+     * "Simulate F1" hides the whole HUD, chat included. With the HUD hidden this screen draws
+     * the game's own chat display the way InGameHud does when nobody is typing, so new lines
+     * appear and fade as in normal play and nothing else comes back. With the HUD showing, the
+     * HUD draws chat itself.
+     */
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
+        if (this.client != null && this.client.options.hudHidden) {
+            context.createNewRootLayer();
+            this.client.inGameHud.getChatHud().render(context, this.client.textRenderer,
+                this.client.inGameHud.getTicks(), mouseX, mouseY, false, false);
+        }
     }
 
     /**
