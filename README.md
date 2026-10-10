@@ -59,7 +59,8 @@ see `docs/agents/porting-patches.md`.
 ## Contributing
 
 Bugs and changes to the patches go to this fork's issues and pull requests (pull requests to
-`1.21.11-mt`). A fix that is not specific to MacroTech belongs with the original author.
+`1.21.11-mt`). New features are welcome too. A change that would help every FreeCursor user
+is worth offering to the original author as well.
 Contributors and their coding agents: read `AGENTS.md` first.
 
 ## Licence
