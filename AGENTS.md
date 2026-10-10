@@ -8,24 +8,24 @@ A fork of [Makev1ch/freecursor](https://github.com/Makev1ch/freecursor) (GPL-2.0
 client-side Fabric mod that frees the mouse cursor on a key. The fork is the branch
 `1.21.11-mt`: the original mod plus two small patches (mt1, mt2), built for Minecraft 1.21.11.
 MacroTech is a small technical Minecraft group. The branch `main` mirrors the original author
-and is never changed here. This repository is not a place for new features.
+and is never changed here.
 
-## Before you write anything
+## What you can build
 
-This fork exists for two small patches. Changes that get merged: a fix to one of the patches,
-a build fix for Minecraft 1.21.11, a correction to the docs.
+Anything your human asked for: a fix to one of the patches, a new feature, a new setting, an
+experiment. It is a game and this is for fun. The maintainer builds and tries every pull request
+before merging, so it does not have to be perfect.
 
-Will be turned down:
+Two things help a change land well here, because this is a fork:
 
-- A new feature, setting or key. It belongs with the original author, upstream.
-- Reformatting, translating or tidying the original's code, comments, changelog or scripts.
-  It makes taking the author's later changes harder.
-- Support for another Minecraft version on this branch. That is a new branch
-  (`docs/agents/porting-patches.md`).
-- A version bump or a release.
+- **Add, rather than rewrite.** A change written as a marked patch on top of the original's code
+  can be carried to the next Minecraft version. A rewrite or a tidy-up of the original's files
+  has to be redone by hand every time.
+- **Offer it upstream too** when it would help every FreeCursor user, not only MacroTech. The
+  original author's repository is where most players get the mod.
 
-If the request is a new feature rather than a fix, tell your human to ask first (a GitHub
-issue on the fork, or the group's hub), and say so plainly in your reply.
+Another Minecraft version is a new branch, not a change to this one: see
+`docs/agents/porting-patches.md`.
 
 ## Set up and commands
 
@@ -41,8 +41,8 @@ JAVA_HOME=/usr/lib/jvm/java-21-openjdk ./gradlew build
   Later runs take seconds.
 - Success is `BUILD SUCCESSFUL` and `build/libs/freecursor-<mod_version>.jar`. Install that
   one, not `-sources.jar`.
-- **Never run `./gradlew runClient`.** It opens a game window on the person's screen. Leave
-  trying the change in game to a person.
+- **Run `./gradlew runClient` only when your human asks.** It opens a game window on their
+  screen.
 - Do not run `update_version.sh`. It is upstream's and writes `+mc1.21.9+` into the version.
 
 ## Find your task
@@ -52,7 +52,7 @@ JAVA_HOME=/usr/lib/jvm/java-21-openjdk ./gradlew build
 | Fix a patch (darkening, blur, chat) | this file | `src/client/java/com/makev1ch/freecursor/FreeCursorScreen.java` |
 | Move the patches to a new Minecraft version or upstream release | `docs/agents/porting-patches.md` | `gradle.properties`, `build.gradle`, `fabric.mod.json` |
 | Fix the docs | this file | `README.md`, `CHANGELOG.md` |
-| Add a feature | stop, see "Before you write anything" | |
+| Add a feature or a setting | this file | `FreeCursorScreen.java`, `FreeCursorClient.java`, `FreeCursorConfig.java` |
 
 ## Where things are
 
@@ -70,8 +70,8 @@ JAVA_HOME=/usr/lib/jvm/java-21-openjdk ./gradlew build
 
 ## Rules
 
-- **Keep the fork small.** Each change is a patch on top of the original: that keeps taking
-  the author's updates possible.
+- **Write each change as a patch on top of the original.** That keeps taking the author's
+  updates, and moving to a new Minecraft version, possible.
 - **Mark each patch in the code** with a comment starting `MacroTech patch (mt<n>, <date>)`
   that says why, and list it in the README and `CHANGELOG.md`. The licence asks that a
   modified version says what changed and when.
@@ -81,8 +81,9 @@ JAVA_HOME=/usr/lib/jvm/java-21-openjdk ./gradlew build
 - **Set the version by hand** in `mod_version` in `gradle.properties`, as the original's
   version plus `-mt<n>+mc<minecraft-version>` (`1.2.10-mt2+mc1.21.11`). Only the maintainer
   does this, when releasing.
-- **Do not reformat, translate or tidy the original's files.** Russian comments, changelog
-  entries and scripts stay as they are.
+- **Leave the original's files as they are where you are not changing behaviour.** Reformatting,
+  translating or tidying them makes every later port harder. Russian comments, changelog
+  entries and scripts stay.
 
 ## Check your work
 
@@ -109,8 +110,5 @@ Never claim you tried it in game if you did not.
   Fix: `JAVA_HOME` set to JDK 21.
 - **Running `update_version.sh`.** Symptom: `mod_version` ends in `+mc1.21.9+`. Fix: restore
   `gradle.properties`, edit the version by hand.
-- **Running `runClient`.** It opens a window; don't.
 - **Tidying upstream's code or the Russian text.** Revert it; it is upstream's.
-- **Adding a setting for a patch.** The patches are deliberately unconditional; a setting is a
-  feature and belongs upstream.
 - **Treating the other tags as this fork's.** Only `v1.2.10-mt2+mc1.21.11` has the patches.
