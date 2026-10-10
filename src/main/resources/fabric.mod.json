@@ -8,10 +8,13 @@
     "Makev1ch",
     "Igr0man1y3_2"
   ],
+  "contributors": [
+    "grandpaul2 (MacroTech fork patches)"
+  ],
   "contact": {
     "homepage": "https://github.com/Makev1ch/freecursor",
-    "sources": "https://github.com/Makev1ch/freecursor",
-    "issues": "https://github.com/Makev1ch/freecursor/issues"
+    "sources": "https://github.com/grandpaul2/freecursor",
+    "issues": "https://github.com/grandpaul2/freecursor/issues"
   },
   "license": "GPL-2.0-only",
   "icon": "assets/freecursor/icon.png",

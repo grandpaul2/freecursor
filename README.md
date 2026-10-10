@@ -1,15 +1,77 @@
-# FreeCursor
+# FreeCursor (MacroTech fork)
 
-> **This is MacroTech's fork** of [Makev1ch/freecursor](https://github.com/Makev1ch/freecursor),
-> on the branch `1.21.11-mt`. It is the same mod, GPL-2.0 like the original, with these changes:
->
-> - **mt1 (2026-08-29):** the world isn't darkened while the cursor is free
->   (`FreeCursorScreen.renderBackground`).
-> - **mt2 (2026-10-10):** chat still shows while the cursor is free with the HUD hidden
->   (`FreeCursorScreen.render`); built for Minecraft 1.21.11 (Loom 1.15, Gradle 9.2.1).
->
-> Jars are named `freecursor-1.2.10-mt<n>+mc1.21.11.jar`. Build with JDK 21: `./gradlew build`.
-> Everything below is the original README.
+This is MacroTech's fork of [FreeCursor](https://github.com/Makev1ch/freecursor) by Makev1ch.
+MacroTech is a small technical vanilla Minecraft group. We run this fork because we wanted the
+world to stay undimmed and chat to stay readable while the cursor is free. It is GPL-2.0, like
+the original, and it is built for MacroTech's Minecraft version, 1.21.11.
+
+FreeCursor is a client-side Fabric mod. Press a key (F6 by default) and the mouse cursor is
+released while the game keeps running; click or press ESC to take control back.
+
+## What the fork changes
+
+The patches are in `FreeCursorScreen.java`, each marked `MacroTech patch` in the code.
+
+- **mt1 (2026-08-29):** no darkening and no blur while the cursor is free. The upstream
+  "Disable Blur" setting is therefore redundant on this screen.
+- **mt2 (2026-10-10):** chat stays visible while the cursor is free with the HUD hidden
+  ("Simulate F1"). Built for Minecraft 1.21.11 only: upstream's 1.2.10 accepted 1.21.9 to
+  1.21.11, and this build refuses 1.21.9 and 1.21.10.
+
+Version `1.2.10-mt2+mc1.21.11` is upstream 1.2.10 plus these patches. See `CHANGELOG.md`.
+
+## Requirements
+
+- Minecraft 1.21.11 (Java 21)
+- Fabric Loader 0.16.0 or newer
+- Fabric API
+- Mod Menu, optional, for the settings screen (the `N` key opens it too)
+
+## Where to get a jar
+
+MacroTech members get the jar from the group's hub, `https://macrotechmc.com`. Anyone else
+builds it. There are no releases. The source for the released jar is the tag
+`v1.2.10-mt2+mc1.21.11`. All other tags in this repository are the original author's and do
+not contain these patches.
+
+## Build
+
+You need JDK 21. With a newer default JDK the build stops at once with
+`Failed to init packages for /usr/lib/jvm/java-<n>-openjdk`; point Gradle at 21:
+
+```sh
+JAVA_HOME=/usr/lib/jvm/java-21-openjdk ./gradlew build
+```
+
+The first run downloads Gradle, Minecraft and mappings and takes a few minutes. The result is
+`build/libs/freecursor-1.2.10-mt2+mc1.21.11.jar`. Put that file in `mods/`; do not use the
+`-sources.jar` next to it.
+
+## Branches and following upstream
+
+- `1.21.11-mt` (the default branch) is this fork. It sits on upstream's 1.2.10.
+- `main` mirrors the original and is never changed here.
+
+Upstream has since moved to Minecraft 26.x, so we do not merge it. When the group changes
+Minecraft version, the patches are ported by hand to a new `<minecraft-version>-mt` branch:
+see `docs/agents/porting-patches.md`.
+
+## Contributing
+
+Bugs and changes to the patches go to this fork's issues and pull requests (pull requests to
+`1.21.11-mt`). A fix that is not specific to MacroTech belongs with the original author.
+Contributors and their coding agents: read `AGENTS.md` first.
+
+## Licence
+
+GPL-2.0, see `LICENSE`. The original author's credit stays in `fabric.mod.json`.
+
+---
+
+# The original README (Makev1ch)
+
+Everything below is the original author's README, unchanged.
+
 **FreeCursor** is a Minecraft mod that allows you to temporarily free your mouse cursor during gameplay by pressing a key.
 
 ## Features
