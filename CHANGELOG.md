@@ -4,12 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ## [1.2.10-mt2+mc1.21.11] - 2026-10-10 (MacroTech fork)
 ### Changed
+- Based on upstream 1.2.10
 - Chat still shows while the cursor is free with the HUD hidden ("Simulate F1")
-- Built for Minecraft 1.21.11 (Loom 1.15, Gradle 9.2.1)
+- Built for Minecraft 1.21.11 only (Loom 1.15, Gradle 9.2.1); upstream 1.2.10 accepted
+  1.21.9 to 1.21.11
 
 ## [1.2.10-mt1] - 2026-08-29 (MacroTech fork)
 ### Changed
-- The world is no longer darkened while the cursor is free
+- Based on upstream 1.2.10; built for Minecraft 1.21.10 (accepted 1.21.9 to 1.21.11)
+- The world is no longer darkened while the cursor is free (and no blur is drawn either)
 
 ## [1.2.9+mc1.21] - 2025-08-11
 ### Fixed

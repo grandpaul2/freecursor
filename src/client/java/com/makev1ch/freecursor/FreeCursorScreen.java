@@ -18,7 +18,7 @@ public class FreeCursorScreen extends Screen {
     }
 
     /**
-     * MacroTech patch (mt2): chat still shows while the cursor is free.
+     * MacroTech patch (mt2, 2026-10-10): chat still shows while the cursor is free.
      *
      * "Simulate F1" hides the whole HUD, chat included. With the HUD hidden this screen draws
      * the game's own chat display the way InGameHud does when nobody is typing, so new lines
@@ -36,7 +36,7 @@ public class FreeCursorScreen extends Screen {
     }
 
     /**
-     * MacroTech patch: leave the world completely undimmed while the cursor is free.
+     * MacroTech patch (mt1, 2026-08-29): leave the world completely undimmed while the cursor is free.
      *
      * Screen#renderBackground paints the vanilla in-game darkening gradient across the whole
      * screen whenever a world is loaded. This screen has no widgets of its own, so there is
