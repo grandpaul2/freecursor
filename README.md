@@ -1,4 +1,15 @@
 # FreeCursor
+
+> **This is MacroTech's fork** of [Makev1ch/freecursor](https://github.com/Makev1ch/freecursor),
+> on the branch `1.21.11-mt`. It is the same mod, GPL-2.0 like the original, with these changes:
+>
+> - **mt1 (2026-08-29):** the world isn't darkened while the cursor is free
+>   (`FreeCursorScreen.renderBackground`).
+> - **mt2 (2026-10-10):** chat still shows while the cursor is free with the HUD hidden
+>   (`FreeCursorScreen.render`); built for Minecraft 1.21.11 (Loom 1.15, Gradle 9.2.1).
+>
+> Jars are named `freecursor-1.2.10-mt<n>+mc1.21.11.jar`. Build with JDK 21: `./gradlew build`.
+> Everything below is the original README.
 **FreeCursor** is a Minecraft mod that allows you to temporarily free your mouse cursor during gameplay by pressing a key.
 
 ## Features
