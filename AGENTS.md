@@ -6,7 +6,7 @@ Guidance for a coding agent (or a person) working on MacroTech's fork of FreeCur
 
 A fork of [Makev1ch/freecursor](https://github.com/Makev1ch/freecursor) (GPL-2.0): a
 client-side Fabric mod that frees the mouse cursor on a key. The fork is the branch
-`1.21.11-mt`: the original mod plus two small patches (mt1, mt2), built for Minecraft 1.21.11.
+`1.21.11-mt`: the original mod plus three small patches (mt1, mt2, mt3), built for Minecraft 1.21.11.
 MacroTech is a small technical Minecraft group. The branch `main` mirrors the original author
 and is never changed here.
 
@@ -50,6 +50,7 @@ JAVA_HOME=/usr/lib/jvm/java-21-openjdk ./gradlew build
 | If you were asked to... | Read | Main files |
 |---|---|---|
 | Fix a patch (darkening, blur, chat) | this file | `src/client/java/com/makev1ch/freecursor/FreeCursorScreen.java` |
+| Fix the "Hide Glow" patch | this file | `src/client/java/com/makev1ch/freecursor/mixin/OutlineMixin.java` |
 | Move the patches to a new Minecraft version or upstream release | `docs/agents/porting-patches.md` | `gradle.properties`, `build.gradle`, `fabric.mod.json` |
 | Fix the docs | this file | `README.md`, `CHANGELOG.md` |
 | Add a feature or a setting | this file | `FreeCursorScreen.java`, `FreeCursorClient.java`, `FreeCursorConfig.java` |
@@ -57,11 +58,13 @@ JAVA_HOME=/usr/lib/jvm/java-21-openjdk ./gradlew build
 ## Where things are
 
 - `src/client/java/com/makev1ch/freecursor/FreeCursorScreen.java`: the screen shown while the
-  cursor is free. **Both patches live here** (`render`, `renderBackground`).
+  cursor is free. **Patches mt1 and mt2 live here** (`renderBackground`, `render`).
 - `src/client/java/com/makev1ch/freecursor/FreeCursorClient.java`: key binding (F6) and
   opening the screen.
 - `FreeCursorConfigScreen.java`, `FreeCursorModMenuIntegration.java`: settings screen.
 - `src/client/java/com/makev1ch/freecursor/mixin/PortalMixin.java`: portal screens.
+- `src/client/java/com/makev1ch/freecursor/mixin/OutlineMixin.java`: **patch mt3**, no glowing
+  outlines while the cursor is free (setting "Hide Glow").
 - `src/main/java/com/makev1ch/freecursor/FreeCursorConfig.java`: settings, saved to
   `freecursor.json`.
 - `src/main/resources/fabric.mod.json`: mod metadata and the Minecraft version it accepts.
@@ -79,7 +82,7 @@ JAVA_HOME=/usr/lib/jvm/java-21-openjdk ./gradlew build
   keep the original authors' credit in `fabric.mod.json`.
 - **Keep the mod id `freecursor`.** Other mods and saved settings refer to it.
 - **Set the version by hand** in `mod_version` in `gradle.properties`, as the original's
-  version plus `-mt<n>+mc<minecraft-version>` (`1.2.10-mt2+mc1.21.11`). Only the maintainer
+  version plus `-mt<n>+mc<minecraft-version>` (`1.2.10-mt3+mc1.21.11`). Only the maintainer
   does this, when releasing.
 - **Leave the original's files as they are where you are not changing behaviour.** Reformatting,
   translating or tidying them makes every later port harder. Russian comments, changelog
@@ -90,7 +93,8 @@ JAVA_HOME=/usr/lib/jvm/java-21-openjdk ./gradlew build
 There are no automated tests. What must pass: the build above, with `BUILD SUCCESSFUL`.
 Whether the screen looks right can only be seen in a running game, which you cannot do.
 Say "built, not tested in game" in the pull request and describe what the maintainer should
-look at (cursor free: world not dimmed, no blur; HUD hidden by "Simulate F1": chat shows).
+look at (cursor free: world not dimmed, no blur; HUD hidden by "Simulate F1": chat shows; "Hide
+Glow" on: a glowing mob loses its outline).
 Never claim you tried it in game if you did not.
 
 ## Send the pull request
@@ -111,4 +115,4 @@ Never claim you tried it in game if you did not.
 - **Running `update_version.sh`.** Symptom: `mod_version` ends in `+mc1.21.9+`. Fix: restore
   `gradle.properties`, edit the version by hand.
 - **Tidying upstream's code or the Russian text.** Revert it; it is upstream's.
-- **Treating the other tags as this fork's.** Only `v1.2.10-mt2+mc1.21.11` has the patches.
+- **Treating the other tags as this fork's.** Only the `v1.2.10-mt<n>+mc1.21.11` tags have the patches.

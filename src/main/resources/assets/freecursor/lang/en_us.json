@@ -10,5 +10,7 @@
   "config.freecursor.simulate_f1": "Simulate F1",
   "config.freecursor.simulate_f1.tooltip": "Hide HUD elements when cursor is freed, just like pressing F1",
   "config.freecursor.disable_blur": "Disable Blur",
-  "config.freecursor.disable_blur.tooltip": "Remove background blur when cursor is freed, restoring original blur when returning to game"
+  "config.freecursor.disable_blur.tooltip": "Remove background blur when cursor is freed, restoring original blur when returning to game",
+  "config.freecursor.hide_glow": "Hide Glow",
+  "config.freecursor.hide_glow.tooltip": "Hide glowing outlines on players and mobs while the cursor is freed"
 }

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.10-mt3+mc1.21.11] - 2026-10-11 (MacroTech fork)
+### Added
+- Based on upstream 1.2.10
+- Setting "Hide Glow" (off by default): no glowing outlines on any entity while the cursor
+  is free
+
 ## [1.2.10-mt2+mc1.21.11] - 2026-10-10 (MacroTech fork)
 ### Changed
 - Based on upstream 1.2.10

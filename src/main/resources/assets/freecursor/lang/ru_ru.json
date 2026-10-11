@@ -10,5 +10,7 @@
   "config.freecursor.simulate_f1": "Имитировать F1",
   "config.freecursor.simulate_f1.tooltip": "Скрывать элементы интерфейса при освобождении курсора, как при нажатии F1",
   "config.freecursor.disable_blur": "Отключить размытие",
-  "config.freecursor.disable_blur.tooltip": "Убирать размытие фона при освобождении курсора, восстанавливая исходное размытие при возврате в игру"
+  "config.freecursor.disable_blur.tooltip": "Убирать размытие фона при освобождении курсора, восстанавливая исходное размытие при возврате в игру",
+  "config.freecursor.hide_glow": "Скрывать свечение",
+  "config.freecursor.hide_glow.tooltip": "Скрывать контуры свечения игроков и мобов, пока курсор освобождён"
 }

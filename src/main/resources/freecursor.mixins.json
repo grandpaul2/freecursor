@@ -6,6 +6,7 @@
   "compatibilityLevel": "JAVA_21",
   "package": "com.makev1ch.freecursor.mixin",
   "client": [
+    "OutlineMixin",
     "PortalMixin"
   ],
   "refmap": "client-freecursor.refmap.json"
