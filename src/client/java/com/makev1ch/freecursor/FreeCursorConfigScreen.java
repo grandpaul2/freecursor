@@ -13,6 +13,7 @@ public class FreeCursorConfigScreen extends Screen {
     private FreeCursorConfig config;
     private ButtonWidget simulateF1Button;
     private ButtonWidget disableBlurButton;
+    private ButtonWidget hideGlowButton; // MacroTech patch (mt3, 2026-10-11)
 
     public FreeCursorConfigScreen(Screen parent) {
         super(Text.translatable("config.freecursor.title"));
@@ -43,6 +44,15 @@ public class FreeCursorConfigScreen extends Screen {
         ).width(200).build();
         adder.add(disableBlurButton);
 
+        // MacroTech patch (mt3, 2026-10-11): "Hide Glow" toggle
+        Text hideGlowText = Text.translatable("config.freecursor.hide_glow");
+        Text hideGlowStatus = config.isHideGlow() ? Text.translatable("options.on") : Text.translatable("options.off");
+        hideGlowButton = ButtonWidget.builder(
+            Text.literal(hideGlowText.getString() + ": " + hideGlowStatus.getString()),
+            button -> { config.setHideGlow(!config.isHideGlow()); updateButtonTexts(); }
+        ).width(200).build();
+        adder.add(hideGlowButton);
+
         adder.add(ButtonWidget.builder(ScreenTexts.DONE, button -> this.close()).width(200).build());
         gridWidget.refreshPositions();
         SimplePositioningWidget.setPos(gridWidget, 0, this.height / 6 + 10, this.width, this.height, 0.5f, 0.0f);
@@ -57,6 +67,10 @@ public class FreeCursorConfigScreen extends Screen {
         Text disableBlurText = Text.translatable("config.freecursor.disable_blur");
         Text disableBlurStatus = config.isDisableBlur() ? Text.translatable("options.on") : Text.translatable("options.off");
         disableBlurButton.setMessage(Text.literal(disableBlurText.getString() + ": " + disableBlurStatus.getString()));
+
+        Text hideGlowText = Text.translatable("config.freecursor.hide_glow");
+        Text hideGlowStatus = config.isHideGlow() ? Text.translatable("options.on") : Text.translatable("options.off");
+        hideGlowButton.setMessage(Text.literal(hideGlowText.getString() + ": " + hideGlowStatus.getString()));
     }
 
     @Override
@@ -71,6 +85,10 @@ public class FreeCursorConfigScreen extends Screen {
         }
         if (disableBlurButton.isHovered()) {
             Text tooltip = Text.translatable("config.freecursor.disable_blur.tooltip");
+            context.drawCenteredTextWithShadow(this.textRenderer, tooltip, this.width / 2, tooltipY, 0xFFFFFF);
+        }
+        if (hideGlowButton.isHovered()) {
+            Text tooltip = Text.translatable("config.freecursor.hide_glow.tooltip");
             context.drawCenteredTextWithShadow(this.textRenderer, tooltip, this.width / 2, tooltipY, 0xFFFFFF);
         }
     }

@@ -10,15 +10,19 @@ released while the game keeps running; click or press ESC to take control back.
 
 ## What the fork changes
 
-The patches are in `FreeCursorScreen.java`, each marked `MacroTech patch` in the code.
+Each patch is marked `MacroTech patch` in the code. mt1 and mt2 are in `FreeCursorScreen.java`,
+mt3 in `mixin/OutlineMixin.java` and the settings.
 
 - **mt1 (2026-08-29):** no darkening and no blur while the cursor is free. The upstream
   "Disable Blur" setting is therefore redundant on this screen.
 - **mt2 (2026-10-10):** chat stays visible while the cursor is free with the HUD hidden
   ("Simulate F1"). Built for Minecraft 1.21.11 only: upstream's 1.2.10 accepted 1.21.9 to
   1.21.11, and this build refuses 1.21.9 and 1.21.10.
+- **mt3 (2026-10-11):** a third setting, "Hide Glow" (off by default). When on, no entity has
+  a glowing outline while the cursor is free: the glowing effect, the spectator highlight key
+  and glow added by other mods. The outlines are back when you return to the game.
 
-Version `1.2.10-mt2+mc1.21.11` is upstream 1.2.10 plus these patches. See `CHANGELOG.md`.
+Version `1.2.10-mt3+mc1.21.11` is upstream 1.2.10 plus these patches. See `CHANGELOG.md`.
 
 ## Requirements
 
@@ -31,7 +35,7 @@ Version `1.2.10-mt2+mc1.21.11` is upstream 1.2.10 plus these patches. See `CHANG
 
 MacroTech members get the jar from the group's hub, `https://macrotechmc.com`. Anyone else
 builds it. There are no releases. The source for the released jar is the tag
-`v1.2.10-mt2+mc1.21.11`. All other tags in this repository are the original author's and do
+`v1.2.10-mt3+mc1.21.11`. All other tags in this repository are the original author's and do
 not contain these patches.
 
 ## Build
@@ -44,7 +48,7 @@ JAVA_HOME=/usr/lib/jvm/java-21-openjdk ./gradlew build
 ```
 
 The first run downloads Gradle, Minecraft and mappings and takes a few minutes. The result is
-`build/libs/freecursor-1.2.10-mt2+mc1.21.11.jar`. Put that file in `mods/`; do not use the
+`build/libs/freecursor-1.2.10-mt3+mc1.21.11.jar`. Put that file in `mods/`; do not use the
 `-sources.jar` next to it.
 
 ## Branches and following upstream

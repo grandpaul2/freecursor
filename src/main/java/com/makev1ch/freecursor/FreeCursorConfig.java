@@ -15,6 +15,8 @@ public class FreeCursorConfig {
     
     public boolean simulateF1 = false;
     public boolean disableBlur = false;
+    // MacroTech patch (mt3, 2026-10-11): hide glow outlines while the cursor is free
+    public boolean hideGlow = false;
     
     private static FreeCursorConfig instance;
     
@@ -71,6 +73,16 @@ public class FreeCursorConfig {
     
     public void setDisableBlur(boolean disableBlur) {
         this.disableBlur = disableBlur;
+        save();
+    }
+
+    // MacroTech patch (mt3, 2026-10-11)
+    public boolean isHideGlow() {
+        return hideGlow;
+    }
+
+    public void setHideGlow(boolean hideGlow) {
+        this.hideGlow = hideGlow;
         save();
     }
 }

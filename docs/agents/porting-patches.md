@@ -18,7 +18,9 @@ under the patches. The fork is not merged with upstream, because upstream's rele
    `8920747`, upstream's 1.2.10.
 3. Reapply each patch. List them with `git grep -n "MacroTech patch" 1.21.11-mt` and read the
    blocks in `FreeCursorScreen.java` on the old branch (`render` for mt2, `renderBackground`
-   for mt1). `git show 504fb43` (mt1) and `git show 5e59142` (mt2) are the exact changes.
+   for mt1). mt3 is `mixin/OutlineMixin.java`, its line in `freecursor.mixins.json`, and the
+   `hideGlow` setting in `FreeCursorConfig.java`, `FreeCursorConfigScreen.java` and the two
+   language files. `git show 504fb43` (mt1) and `git show 5e59142` (mt2) are the exact changes.
    Copy the blocks in, keeping the `MacroTech patch (mt<n>, <date>)` comments.
 4. Fix what the new Minecraft version breaks. mt2 had to update `gradle.properties`
    (`minecraft_version`, `yarn_mappings`, `fabric_version`), the Loom plugin and Gradle
@@ -26,7 +28,7 @@ under the patches. The fork is not merged with upstream, because upstream's rele
    the `jar` block (`project.archivesBaseName` became `project.base.archivesName.get()`); the exact old and new lines are in
    `git show 5e59142`. Take the new values from the Fabric develop page for your version.
    The patches call Minecraft code (`ChatHud.render`, `DrawContext.createNewRootLayer`,
-   `Screen.renderBackground`), so a changed signature fails the compile; fix the call.
+   `Screen.renderBackground`, `MinecraftClient.hasOutline`), so a changed signature or name fails the compile; fix the call.
 5. In `src/main/resources/fabric.mod.json`, set `depends.minecraft` to the version range you
    build for (mt2 used `>=1.21.11 <1.21.12`).
 6. Set `mod_version` in `gradle.properties` by hand: the upstream version, `-mt<n>`, and
