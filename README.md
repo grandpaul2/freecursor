@@ -1,5 +1,9 @@
 # FreeCursor (MacroTech fork)
 
+> **This fork is frozen at 1.2.10-mt3 (2026-10-11).** MacroTech's later changes are made inside the
+> group's own mod, which now carries Free Cursor, and are not published here. The patches up to
+> mt3 below remain available under GPL-2.0.
+
 This is MacroTech's fork of [FreeCursor](https://github.com/Makev1ch/freecursor) by Makev1ch.
 MacroTech is a small technical vanilla Minecraft group. We run this fork because we wanted the
 world to stay undimmed and chat to stay readable while the cursor is free. It is GPL-2.0, like
